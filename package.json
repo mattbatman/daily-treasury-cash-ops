@@ -1,0 +1,17 @@
+{
+  "name": "daily-treasury-cash-ops",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/mattbatman/daily-treasury-cash-ops.git",
+  "author": "Matt Batman",
+  "license": "MIT",
+  "scripts": {
+    "build:css": "node-sass -o css/dist css/src --output-style expanded"
+  },
+  "dependencies": {
+    "d3": "^4.7.4"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.2"
+  }
+}

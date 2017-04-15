@@ -6,12 +6,16 @@
   "author": "Matt Batman",
   "license": "MIT",
   "scripts": {
-    "build:css": "node-sass -o css/dist css/src --output-style expanded"
+    "build:css": "node-sass -o css/dist css/src --output-style expanded",
+    "build:js": "webpack --config webpack.config.js",
+    "serve": "http-server -p 8080"
   },
   "dependencies": {
-    "d3": "^4.7.4"
+    "d3": "^4.7.4",
+    "http-server": "^0.9.0"
   },
   "devDependencies": {
-    "node-sass": "^4.5.2"
+    "node-sass": "^4.5.2",
+    "webpack": "^2.4.1"
   }
 }

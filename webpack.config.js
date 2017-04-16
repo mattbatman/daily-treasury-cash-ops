@@ -4,6 +4,6 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'docs/js')
+    path: path.resolve(__dirname, 'build/js')
   }
 }

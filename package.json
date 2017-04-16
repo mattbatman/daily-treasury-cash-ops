@@ -6,7 +6,7 @@
   "author": "Matt Batman",
   "license": "MIT",
   "scripts": {
-    "build:css": "node-sass -o docs/css src/scss --output-style expanded",
+    "build:css": "node-sass -o build/css src/scss --output-style expanded",
     "build:js": "webpack --config webpack.config.js",
     "build": "yarn run build:css && yarn run build:js",
     "serve": " webpack-dev-server"

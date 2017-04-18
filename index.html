@@ -9,10 +9,23 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Diplomata+SC" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/node_modules/flatpickr/dist/themes/base16_flat.css" />
     <link rel="stylesheet" type="text/css" href="/build/css/main.css" />
 </head>
 <body>
-    <h1>What did the federal government spend your money on today?</h1>
+    <h1>
+        What did the federal government spend money on today?
+    </h1>
+    <p>
+        This information taken from the daily treasury statements issued
+        by <a href="http://www.fms.treas.gov/index.html" target="_blank">U.S. Treasury data</a> via <a href="http://treasury.io/" target="_blank">Treasury.io</a>.
+    </p>
+    <p>
+        Note that a daily treasury statement is not issued every day.
+    </p>
+    <input class="flatpickr" type="text" placeholder="Select Date..">
+    <div class="chart"></div>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script type="text/javascript" src="/build/js/index.js"></script>
 </body>
 </html>

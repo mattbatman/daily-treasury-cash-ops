@@ -9,8 +9,22 @@ module.exports = {
   devServer: {
    headers: {
      "Access-Control-Allow-Origin": "*",
-     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+     "Access-Control-Allow-Methods": "GET",
      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
    }
- }
+ },
+ module: {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          ['es2015', {modules: false }]
+        ]
+      }
+    }
+  ]
+},
 }

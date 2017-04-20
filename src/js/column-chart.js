@@ -3,7 +3,7 @@ import * as d3 from './manual-d3-bundle';
 export function ColumnChart() {
   // declare variables
   let container;
-  let data = [];
+  let data;
   let elClass = '.chart';
   let svg;
   const margin = { top: 15, right: 15, bottom: 30, left: 300 };
@@ -13,6 +13,7 @@ export function ColumnChart() {
   let yAxis;
   let xScale;
   let xAxis;
+  let rect;
   // initialize chart for rendering
   const init = function() {
     width = parseInt(d3.select('.chart').style('width')) - margin.left - margin.right;
@@ -37,7 +38,10 @@ export function ColumnChart() {
       .attr('class', 'y axis');
   };
   // update chart with new data
-  const update = function(data) {
+  const update = function(apiData) {
+    callingDataResolved();
+
+    data = apiData;
 
     yScale
       .domain(data.map(d => d.item))
@@ -61,10 +65,13 @@ export function ColumnChart() {
     svg.select('.y.axis')
         .call(yAxis);
 
-    svg.selectAll('rect')
-      .data(data)
-      .enter()
-      .append('rect')
+    let rect = svg.selectAll('rect')
+      .data(data);
+
+    rect.exit().remove();
+
+    rect.enter().append('rect')
+      .merge(rect)
       .attr('x', _ => xScale(0))
       .attr('y', d => yScale(d.item))
       .attr('width', d => xScale(d.amount) - xScale(0))
@@ -73,6 +80,20 @@ export function ColumnChart() {
     container = d3.select(svg.node().parentNode);
     d3.select(window).on('resize.' + container.attr('id'), resize);
   };
+
+  const callingData = function() {
+    d3.selectAll('rect')
+      .classed('loading-state', true);
+      d3.selectAll('text')
+        .classed('loading-state', true);
+  };
+
+  function callingDataResolved() {
+    d3.selectAll('rect')
+      .classed('loading-state', false);
+    d3.selectAll('text')
+      .classed('loading-state', false);
+  }
 
   // get width of container and resize svg to fit it
   function resize() {
@@ -96,6 +117,7 @@ export function ColumnChart() {
 
   return {
     init: init,
+    callingData: callingData,
     update: update
   };
 }

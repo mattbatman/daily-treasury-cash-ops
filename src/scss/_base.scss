@@ -23,3 +23,9 @@ a {
 a:hover {
     color: darken($links, 10%);
 }
+
+input {
+    border: $my-black 1px solid;
+    color: $my-black;
+    padding: 5px;
+}

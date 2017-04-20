@@ -15,4 +15,9 @@ rect:hover {
 }
 .axis text {
     font-size: 12px;
+    font-family: $font-graph;
+    font-weight: 300;
+}
+.loading-state {
+    fill-opacity: 0.25;
 }

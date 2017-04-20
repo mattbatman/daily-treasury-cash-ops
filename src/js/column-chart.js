@@ -39,9 +39,10 @@ export function ColumnChart() {
   };
   // update chart with new data
   const update = function(apiData) {
-    callingDataResolved();
 
     data = apiData;
+
+    var t = d3.transition().duration(1000);
 
     yScale
       .domain(data.map(d => d.item))
@@ -59,41 +60,47 @@ export function ColumnChart() {
     yAxis
       .scale(yScale);
 
-    svg.select('.x.axis')
-      .call(xAxis);
-
-    svg.select('.y.axis')
-        .call(yAxis);
-
     let rect = svg.selectAll('rect')
       .data(data);
 
-    rect.exit().remove();
+    rect.exit()
+      .transition(t)
+      .attr('width', _ => xScale(0))
+      .attr('x', _ => xScale(0))
+      .remove();
 
-    rect.enter().append('rect')
-      .merge(rect)
+    svg.select('.x.axis')
+      .transition(t)
+      .delay(1000)
+      .call(xAxis);
+
+    svg.select('.y.axis')
+    .transition(t)
+    .delay(1000)
+      .call(yAxis);
+
+    rect
+      .transition(t)
+      .delay(1000)
+      .attr('y', d => yScale(d.item))
+      .attr('height', _ => yScale.bandwidth())
+      .attr('x', _ => xScale(0))
+      .attr('width', d => xScale(d.amount) - xScale(0))
+
+    rect
+      .enter()
+      .append('rect')
+      .attr('width', _ => xScale(0))
       .attr('x', _ => xScale(0))
       .attr('y', d => yScale(d.item))
-      .attr('width', d => xScale(d.amount) - xScale(0))
-      .attr('height', _ => yScale.bandwidth());
+      .attr('height', _ => yScale.bandwidth())
+      .transition(t)
+      .delay(rect.exit().size() ? 2000 : 0)
+      .attr('width', d => xScale(d.amount) - xScale(0));
 
     container = d3.select(svg.node().parentNode);
     d3.select(window).on('resize.' + container.attr('id'), resize);
   };
-
-  const callingData = function() {
-    d3.selectAll('rect')
-      .classed('loading-state', true);
-      d3.selectAll('text')
-        .classed('loading-state', true);
-  };
-
-  function callingDataResolved() {
-    d3.selectAll('rect')
-      .classed('loading-state', false);
-    d3.selectAll('text')
-      .classed('loading-state', false);
-  }
 
   // get width of container and resize svg to fit it
   function resize() {
@@ -117,7 +124,6 @@ export function ColumnChart() {
 
   return {
     init: init,
-    callingData: callingData,
     update: update
   };
 }

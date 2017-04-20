@@ -9,7 +9,6 @@ const pickerConfig = {
   minDate: new Date(2005, 5, 9),
   maxDate: new Date(),
   onChange: function(selectedDates, dateStr, _) {
-    columnChart.callingData();
     treasuryIo(`SELECT * FROM t2 WHERE ("date" = '${dateStr}') AND ("transaction_type" = 'withdrawal')`);
   }
 };

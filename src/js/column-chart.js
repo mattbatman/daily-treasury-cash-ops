@@ -76,7 +76,7 @@ export function ColumnChart() {
 
     svg.select('.y.axis')
     .transition(t)
-    .delay(1000)
+    .delay(data.length === rect.enter().size() ? 0 : 1000)
       .call(yAxis);
 
     rect

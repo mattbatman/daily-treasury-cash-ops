@@ -8,14 +8,14 @@ const pickerConfig = {
   altInput: true,
   minDate: new Date(2005, 5, 9),
   maxDate: new Date(),
-  onChange: function(selectedDates, dateStr, instance) {
+  onChange: function(selectedDates, dateStr, _) {
     treasuryIo(`SELECT * FROM t2 WHERE ("date" = '${dateStr}') AND ("transaction_type" = 'withdrawal')`);
   }
 };
 // initialize calendar
-let calendar = new Flatpickr(pickerEl, pickerConfig);
+const calendar = new Flatpickr(pickerEl, pickerConfig);
 // initialize d3 column chart
-let columnChart = ColumnChart();
+const columnChart = ColumnChart();
 columnChart.init();
 // pass query string in api call to treasury.io
 function treasuryIo(query){
@@ -23,13 +23,19 @@ function treasuryIo(query){
 }
 // callback for treasury.io call
 function treasuryCallback(res) {
-  let data = res
+  const data = res
     .map((x) => {
       return {
         amount: x.today,
         date: x.date,
         item: x.item,
-      }
+      };
+    })
+    .filter((x) => {
+      return x.item !== 'Net Change in Operating Cash Balance'
+        && x.item !== 'Total Withdrawals ( excluding transfers )'
+        && x.item !== 'Total Federal Reserve Account'
+        && x.item !== 'Total Other Withdrawals';
     });
   columnChart.update(data);
 }

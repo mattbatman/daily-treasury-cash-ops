@@ -1,0 +1,25 @@
+/* =================================
+    Base Element Styles
+==================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: $my-white;
+    font-family: $font-body;
+}
+
+p {
+    color: $gray;
+}
+
+a {
+    color: $links;
+    text-decoration: none;
+}
+
+a:hover {
+    color: darken($links, 10%);
+}

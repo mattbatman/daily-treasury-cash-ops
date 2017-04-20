@@ -1,0 +1,19 @@
+/* =================================
+    Chart
+==================================== */
+
+.chart {
+    background: $my-white;
+    border: 1px solid $my-black;
+    height: 700px;
+    width: 100%;
+}
+rect {
+    fill: $primary;
+}
+rect:hover {
+    fill: $primary-alt;
+}
+.axis text {
+    font-size: 12px;
+}

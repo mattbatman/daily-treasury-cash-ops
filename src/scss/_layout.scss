@@ -1,0 +1,10 @@
+/* =================================
+    Layout
+==================================== */
+
+.container {
+  @include clearfix;
+  width: 95vw;
+  margin: 0 auto;
+  max-width: $container-max-width;
+}

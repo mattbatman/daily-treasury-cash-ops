@@ -15,12 +15,40 @@ rect:hover {
 }
 .axis text,
 .label {
-    font-size: 12px;
+    font-size: 11px;
     font-family: $font-graph;
     font-weight: 300;
 }
 .no-data-message {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-family: $font-graph;
     font-weight: 900;
+}
+
+.tooltip {
+    background-color: $my-black;
+    color: $my-white;
+    display: table;
+    font-family: $font-graph;
+    padding: 3px;
+    position: absolute;
+}
+
+.tooltip thead {
+    font-weight: 900;
+}
+
+.tooltip tbody {
+    font-weight: 300;
+}
+
+.none {
+    display: none;
+}
+
+@media (min-width: 450px) {
+    .axis text,
+    .label {
+        font-size: 12px;
+    }
 }

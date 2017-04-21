@@ -17,6 +17,8 @@
         <h1>
             What did the federal government spend money on today?
         </h1>
+        <input class="flatpickr" type="text" placeholder="Pick a day...">
+        <div class="chart"></div>
         <p>
             This data is initially prepared and provided by the
             <a href="https://www.fms.treas.gov/dts/index.html" target="_blank">
@@ -28,10 +30,14 @@
             Treasury.io is not affiliated with the U.S. government.
         </p>
         <p>
+            More specifically, the chart above represents the withdrawals line
+            items from "TABLE II - Deposits and Withdrawals of Operating Cash"
+            of the Daily Treasury Statement. Whenever you select a new date,
+            this page makes an API call to Treasury.io.
+        </p>
+        <p>
             Note that daily treasury statements aren't issued every single day.
         </p>
-        <input class="flatpickr" type="text" placeholder="Pick a day...">
-        <div class="chart"></div>
         <footer>
             <p><a href="https://github.com/mattbatman/daily-treasury-cash-ops">See the Github Repo</a> | <a href="https://mattbatman.github.io">Made by Matt Batman</a></p>
         </footer>

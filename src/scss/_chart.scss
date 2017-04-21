@@ -4,7 +4,7 @@
 
 .chart {
     background: $my-white;
-    height: 700px;
+    height: 600px;
     width: 100%;
 }
 rect {
@@ -13,7 +13,8 @@ rect {
 rect:hover {
     fill: $primary-alt;
 }
-.axis text {
+.axis text,
+.label {
     font-size: 12px;
     font-family: $font-graph;
     font-weight: 300;

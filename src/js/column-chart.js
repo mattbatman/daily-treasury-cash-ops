@@ -6,14 +6,14 @@ export function ColumnChart() {
   let data;
   let elClass = '.chart';
   let svg;
-  const margin = { top: 15, right: 15, bottom: 30, left: 300 };
+  const margin = { top: 15, right: 15, bottom: 35, left: 300 };
   let width;
   let height;
   let yScale;
   let yAxis;
   let xScale;
   let xAxis;
-  let rect;
+  let xLabel;
   // initialize chart for rendering
   const init = function() {
     width = parseInt(d3.select('.chart').style('width')) - margin.left - margin.right;
@@ -36,6 +36,13 @@ export function ColumnChart() {
 
     svg.append('g')
       .attr('class', 'y axis');
+
+    svg.append('g')
+      .attr('class', 'x label')
+      .attr('transform', `translate(0, ${height + margin.bottom - 3})`)
+      .append('text')
+      .text('Millions ($)')
+      .classed('none', true);
   };
   // update chart with new data
   const update = function(apiData) {
@@ -60,6 +67,10 @@ export function ColumnChart() {
     yAxis
       .scale(yScale);
 
+    svg.select('.x.label')
+      .select('text')
+      .classed('none', false);
+
     let rect = svg.selectAll('rect')
       .data(data);
 
@@ -71,7 +82,7 @@ export function ColumnChart() {
 
     svg.select('.x.axis')
       .transition(t)
-      .delay(1000)
+      .delay(data.length === rect.enter().size() ? 0 : 1000)
       .call(xAxis);
 
     svg.select('.y.axis')

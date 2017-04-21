@@ -43,9 +43,19 @@ export function ColumnChart() {
       .append('text')
       .text('Millions ($)')
       .classed('none', true);
+
+    svg.append('g')
+      .attr('class', 'no-data-message')
+      .attr('transform', `translate(5, ${height / 2})`)
+      .append('text')
+      .text('There was no data to display. Try another date.')
+      .classed('none', true);
   };
+
   // update chart with new data
   const update = function(apiData) {
+
+    dataLengthCheck(apiData);
 
     data = apiData;
 
@@ -131,6 +141,20 @@ export function ColumnChart() {
       .attr('y', d => yScale(d.item))
       .attr('width', d => xScale(d.amount) - xScale(0))
       .attr('height', _ => yScale.bandwidth());
+  }
+
+  function dataLengthCheck(d) {
+
+    if (d.length === 0) {
+      svg.select('.no-data-message')
+        .select('text')
+        .classed('none', false);
+    } else {
+      svg.select('.no-data-message')
+        .select('text')
+        .classed('none', true);
+    }
+
   }
 
   return {

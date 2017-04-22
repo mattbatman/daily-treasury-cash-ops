@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'build/js')
+    path: path.resolve(__dirname, 'js')
   },
   devServer: {
    headers: {

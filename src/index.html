@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Daily Treasury Cash Ops</title>
+    <meta name="description" content="Daily treasury cash statements visualized.">
+    <meta name="keywords" content="" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,900" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>
+            What did the federal government spend money on today?
+        </h1>
+        <input class="flatpickr" type="text" placeholder="Pick a day...">
+        <div class="chart"></div>
+        <p>
+            This data is initially prepared and provided by the
+            <a href="https://www.fms.treas.gov/dts/index.html" target="_blank">
+            Bureau of the Fiscal Service</a> in the form of a daily treasury
+            statement, representing the cash operations of the federal government.
+            <a href="http://treasury.io/" target="_blank">Treasury.io</a> reformats
+            these statements, giving them a consistent structure, and provides
+            the data as an open source, queryable database to the public.
+            Treasury.io is not affiliated with the U.S. government.
+        </p>
+        <p>
+            More specifically, the chart above represents the withdrawals line
+            items from "TABLE II - Deposits and Withdrawals of Operating Cash"
+            of the Daily Treasury Statement. Whenever you select a new date,
+            this page makes an API call to Treasury.io.
+        </p>
+        <p>
+            Note that daily treasury statements aren't issued every single day.
+        </p>
+        <footer>
+            <p><a href="https://github.com/mattbatman/daily-treasury-cash-ops">See the Github Repo</a> | <a href="https://mattbatman.github.io">Made by Matt Batman</a></p>
+        </footer>
+    </div>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+</body>
+</html>

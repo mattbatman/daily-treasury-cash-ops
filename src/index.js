@@ -1,6 +1,8 @@
-import * as d3 from './manual-d3-bundle';
-import * as Flatpickr from '../../node_modules/flatpickr/dist/flatpickr.min.js';
-import { ColumnChart } from './column-chart';
+import './scss/main.scss';
+
+import * as d3 from './js/manual-d3-bundle';
+import * as Flatpickr from '../node_modules/flatpickr/dist/flatpickr.min.js';
+import { ColumnChart } from './js/column-chart';
 
 // set config and element variables for calendar
 const pickerEl = document.querySelector('.flatpickr');

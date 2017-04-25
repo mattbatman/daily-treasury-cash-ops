@@ -29,3 +29,13 @@ input {
     color: $my-black;
     padding: 5px;
 }
+
+.size-warning {
+    display: inline-block;
+}
+
+@media (min-width: 399px) {
+    .size-warning {
+        display: none;
+    }
+}
